@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace习惯上设置为包名+映射名-->
+<mapper namespace="site.tgclub.dao.MemberDao">
+
+    <select id="selectMemberById" parameterType="Integer"  resultType="member" resultMap="memExResultMap">
+        SELECT * FROM  t_member WHERE id = #{id}
+    </select>
+
+    <select id="selectMemberByName" parameterType="String" resultType="member" resultMap="memExResultMap">
+        select * from t_member where username LIKE concat(concat('%',#{name}),'%');
+    </select>
+
+    <select id="getAllMembers" resultType="member" resultMap="memExResultMap" >
+        SELECT * FROM t_member
+    </select>
+
+    <insert id="insertMember" parameterType="member">
+        INSERT INTO t_member VALUES (#{id},#{username},#{college},#{projectId},#{departmentId},#{avatar},#{introduction},#{tag},#{gender},#{age})
+    </insert>
+
+    <update id="updateMemberById" >
+        UPDATE t_member SET username=#{member.username},college=#{member.college},proid=#{member.projectId},deptid=#{member.departmentId},avatar=#{member.avatar},introduction=#{member.introduction},tag=#{member.tag},gender=#{member.gender},age=#{member.age} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteMemberById" parameterType="Integer">
+        DELETE FROM t_member WHERE id = #{id}
+    </delete>
+
+
+    <resultMap id="memExResultMap" type="member">
+        <id property="id" column="id"/>
+        <result property="college" column="college"/>
+        <result property="username" column="username"/>
+        <result property="departmentId" column="deptId"/>
+        <result property="projectId" column="proId"/>
+        <result property="introduction" column="introduction"/>
+        <result property="avatar" column="avatar"/>
+        <result property="tag" column="tag"/>
+        <result property="gender" column="gender"/>
+        <result property="age" column="age"/>
+    </resultMap>
+    
+
+
+
+</mapper>

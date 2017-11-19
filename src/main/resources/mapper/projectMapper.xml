@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.tgclub.dao.ProjectDao">
+    <select id="selectProjectById" resultType="Project" resultMap="ProExResultMap">
+        SELECT  * FROM t_project p LEFT JOIN t_member m ON  m.proid = p.proid LEFT JOIN t_proj_cate pc ON p.proid = pc.proid LEFT JOIN t_category c ON c.cateid=pc.cateid WHERE p.proid = #{id}
+    </select>
+
+    <select id="getAllProjects" resultType="Project" resultMap="ProExResultMap">
+        SELECT  * FROM t_project p LEFT JOIN t_member m ON  m.proid = p.proid LEFT JOIN t_proj_cate pc ON p.proid = pc.proid LEFT JOIN t_category c ON c.cateid=pc.cateid
+    </select>
+
+    <insert id="insertProject" parameterType="project">
+        INSERT INTO t_project VALUES (#{id},#{projectName},#{startDate},#{finishedDate},#{sourceUrl},#{leaderId},#{UIProgress},#{frontProgress},#{backProgress},#{picUrl},#{introduction},#{totalProgress})
+    </insert>
+
+    <update id="updateProjectById" >
+        UPDATE t_project SET projectName=#{project.projectName},startDate=#{project.startDate},finishedDate=#{project.finishedDate},sourceUrl=#{project.sourceUrl},leaderId=#{project.leaderId},UIProgress=#{project.UIProgress},frontProgress=#{project.frontProgress},backProgress=#{project.backProgress},picUrl=#{project.picUrl},
+        intro=#{project.introduction},totalProgress=#{project.totalProgress} WHERE proid = #{id}
+    </update>
+
+    <delete id="deleteProjectById" parameterType="Integer">
+        DELETE FROM t_project WHERE proid = #{id}
+    </delete>
+    
+    <resultMap id="ProjectResultMap" type="Project">
+        <result property="id" column="proid"/>
+        <result property="projectName" column="ProjectName"/>
+        <result property="backProgress" column="BackProgress"/>
+        <result property="frontProgress" column="FrontProgress"/>
+        <result property="UIProgress" column="UIProgress"/>
+        <result property="totalProgress" column="totalProgress"/>
+        <result property="picUrl" column="picUrl"/>
+
+        <result property="sourceUrl" column="sourceUrl"/>
+        <result property="introduction" column="intro"/>
+        <result property="startDate" column="startDate"/>
+        <result property="finishedDate" column="finishedDate"/>
+        <result property="leaderId" column="leaderid"/>
+        <collection property="members" resultMap="site.tgclub.dao.MemberDao.memExResultMap"/>
+    </resultMap>
+
+    <resultMap id="ProExResultMap" type="Project" extends="ProjectResultMap">
+        <collection property="categories" ofType="Category" resultMap="site.tgclub.dao.CategoryDao.CateResultMap"/>
+    </resultMap>
+
+</mapper>
