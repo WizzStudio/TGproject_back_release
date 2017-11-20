@@ -15,9 +15,6 @@
         SELECT * FROM t_department d  LEFT JOIN t_member m  ON  m.deptid=d.deptid
     </select>
 
-    <insert id="insertDepartment" parameterType="Department">
-        INSERT INTO t_department VALUES (#{id},#{description})
-    </insert>
 
 
 

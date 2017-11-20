@@ -14,7 +14,6 @@
 
 <h1>SUCCESS PAGE</h1>
 
-${requestScope.user}
 
 </body>
 </html>

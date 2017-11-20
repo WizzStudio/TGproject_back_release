@@ -1,7 +1,5 @@
 package com;
 
-import site.tgclub.model.User;
-import site.tgclub.service.UserService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;

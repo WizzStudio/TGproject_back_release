@@ -1,5 +1,8 @@
 package site.tgclub.model;
-
+/**
+ * @author fzm
+ * @date 2017/11/15
+ **/
 public class Manager {
 
     private String name;

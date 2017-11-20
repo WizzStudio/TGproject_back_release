@@ -9,7 +9,10 @@ import site.tgclub.exception.NoSuchResourceException;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @author fzm
+ * @date 2017/11/18
+ **/
 @ControllerAdvice
 public class OwnExceptionHandler {
 

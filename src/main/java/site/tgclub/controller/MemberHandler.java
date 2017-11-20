@@ -8,7 +8,10 @@ import site.tgclub.model.Member;
 import site.tgclub.service.MemberService;
 
 import java.util.List;
-
+/**
+ * @author fzm
+ * @date 2017/11/18
+ **/
 @Controller
 @ControllerAdvice
 public class MemberHandler {
