@@ -97,3 +97,5 @@ gen
 
 .classpath
 .project
+
+jdbc.properties
