@@ -1,6 +1,7 @@
 package site.tgclub.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,12 +9,11 @@ import site.tgclub.model.Member;
 import site.tgclub.service.MemberService;
 
 import java.util.List;
+
 /**
  * @author fzm
- * @date 2017/11/18
- **/
+ */
 @Controller
-@ControllerAdvice
 public class MemberHandler {
 
     private final MemberService memberService;
@@ -48,7 +48,7 @@ public class MemberHandler {
     }
 
     @ResponseBody
-    @RequestMapping(value = "memberId/{memberId}",method = RequestMethod.PUT)
+    @RequestMapping(value = "memberId/{memberId}",method = RequestMethod.PUT,produces = MediaType.APPLICATION_JSON_VALUE)
     public Member updateMember(@RequestBody Member member,@PathVariable("memberId") Integer memberId){
         return memberService.updateMemberById(memberId, member);
     }

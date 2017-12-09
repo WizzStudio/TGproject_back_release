@@ -5,10 +5,10 @@ import org.springframework.stereotype.Repository;
 import site.tgclub.model.Category;
 
 import java.util.List;
+
 /**
  * @author fzm
- * @date 2017/11/16
- **/
+ */
 @Repository
 @MapperScan
 public interface CategoryDao {
@@ -19,6 +19,13 @@ public interface CategoryDao {
      * @return 返回对应的标签
      */
     Category selectCategoryById(Integer id);
+
+    /**
+     * 根据名字返回标签
+     * @param name 代表查询的名字
+     * @return 返回对应的标签
+     */
+    List<Category> selectCategoryByName(String name);
 
 
 }

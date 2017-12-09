@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import site.tgclub.model.Project;
 
 import java.util.List;
+
 /**
  * @author fzm
  * @date 2017/11/16
@@ -37,7 +38,7 @@ public interface ProjectDao {
      * @param id 代表部门ID
      * @param project 更新的部门数据
      */
-    void updateProjectById(@Param("id") Integer id, @Param("project")Project project);
+    void updateProjectById(@Param("id") Integer id, @Param("project") Project project);
 
     /**
      * 根据ID删除部门数据

@@ -18,7 +18,7 @@ public class TestDepartment extends AbstractTestNGSpringContextTests{
 
     @Test
     public void testSelect(){
-        Department department = departmentDao.selectDepartmentById(3);
+        Department department = departmentDao.selectDepartmentById(1);
         System.out.println(department.toString());
     }
 

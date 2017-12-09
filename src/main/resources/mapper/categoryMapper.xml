@@ -8,6 +8,9 @@
         SELECT * FROM t_category c LEFT JOIN t_proj_cate pc ON pc.cateid = c.cateid LEFT JOIN t_project p ON p.proid = pc.proid LEFT JOIN t_member m ON m.proid = p.proid WHERE c.cateid =#{id}
     </select>
 
+    <select id="selectCategoryByName" parameterType="String" resultMap="CatesExResultMap" resultType="List">
+        SELECT * FROM t_category c LEFT JOIN t_proj_cate pc ON pc.cateid = c.cateid LEFT JOIN t_project p ON p.proid = pc.proid LEFT JOIN t_member m ON m.proid = p.proid WHERE c.description LIKE concat(concat('%',#{name}),'%')
+    </select>
 
     <resultMap id="CateResultMap" type="Category">
         <result property="id" column="cateid"/>
@@ -16,6 +19,10 @@
 
     <resultMap id="CateExResultMap" type="Category" extends="CateResultMap">
         <collection property="projects" resultMap="site.tgclub.dao.ProjectDao.ProjectResultMap"/>
+    </resultMap>
+
+    <resultMap id="CatesExResultMap" type="Category"  extends="CateResultMap">
+        <collection property="projects" resultMap="site.tgclub.dao.ProjectDao.ProjectResultMap" />
     </resultMap>
 
 

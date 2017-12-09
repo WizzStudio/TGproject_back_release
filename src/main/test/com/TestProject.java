@@ -32,16 +32,16 @@ public class TestProject extends AbstractTestNGSpringContextTests{
     @Test
     public void testInsert(){
         Project project = new Project();
-        project.setId(3);
+        project.setId(4);
         project.setProjectName("组队平台");
         project.setStartDate(Date.valueOf("2017-11-12"));
         project.setFinishedDate(Date.valueOf("2017-12-12"));
-        project.setSourceUrl("oj8k");
+        project.setSourceUrl("https://github.com/TGclub");
         project.setLeaderId(1);
         project.setUIProgress(20d);
         project.setFrontProgress(30d);
         project.setBackProgress(40d);
-        project.setPicUrl("localhost");
+        project.setPicUrl("http://dysmorsel2.oss-cn-hangzhou.aliyuncs.com/TG/2.png");
         project.setIntroduction("一个组队的平台");
         project.setTotalProgress(25d);
         projectDao.insertProject(project);
@@ -49,8 +49,8 @@ public class TestProject extends AbstractTestNGSpringContextTests{
 
     @Test
     public void testUpdate(){
-        Project project = projectDao.selectProjectById(3);
-        project.setStartDate(Date.valueOf("2017-11-11"));
+        Project project = new Project();
+        project.setStartDate(Date.valueOf("2017-11-22"));
         projectDao.updateProjectById(3,project);
     }
 

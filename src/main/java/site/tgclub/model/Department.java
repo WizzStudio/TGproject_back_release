@@ -11,8 +11,10 @@ public class Department {
 
 		private Integer id;
 		private String name;
-		private String description;	//部门描述
-		private Set<Member> members;	//部门成员
+		//部门描述
+		private String description;
+		//部门成员
+		private Set<Member> members;
 
 			public Integer getId() {
 			return id;

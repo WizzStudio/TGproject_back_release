@@ -5,8 +5,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 import site.tgclub.model.Member;
 
-
 import java.util.List;
+
 /**
  * @author fzm
  * @date 2017/11/16
@@ -45,7 +45,7 @@ public interface MemberDao {
      * @param id 代表成员ID
      * @param member 更新的成员数据
      */
-    void updateMemberById(@Param("id") Integer id,@Param("member")Member member);
+    void updateMemberById(@Param("id") Integer id, @Param("member") Member member);
 
     /**
      * 根据ID删除成员数据

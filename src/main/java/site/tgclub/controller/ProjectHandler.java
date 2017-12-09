@@ -7,10 +7,10 @@ import site.tgclub.model.Project;
 import site.tgclub.service.ProjectService;
 
 import java.util.List;
+
 /**
  * @author fzm
- * @date 2017/11/18
- **/
+ */
 @Controller
 public class ProjectHandler {
 
@@ -21,7 +21,7 @@ public class ProjectHandler {
         this.projectService = projectService;
     }
     @ResponseBody
-    @RequestMapping(value = "/project/{projectId}" ,method = RequestMethod.GET)
+    @RequestMapping(value = "/projectId/{projectId}" ,method = RequestMethod.GET)
     public Project getProjectById(@PathVariable("projectId") Integer id){
         return projectService.getProjectById(id);
     }

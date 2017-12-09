@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="site.tgclub.dao.DepartmentDao">
-    <!-- 缓存的第二级开关，写上即开启 -->
-    <!-- 一级默认开启，二级默认关闭，三级默认开启 -->
-    <!--<cache eviction="LRU" size="2" readOnly="false"/>-->
-
 
 
     <select id="selectDepartmentById" parameterType="Integer" resultType="Department"  resultMap="deptExtResultMap">
@@ -12,9 +8,12 @@
     </select>
 
     <select id="getAllDepartment" resultType="Department" resultMap="deptExtResultMap">
-        SELECT * FROM t_department d  LEFT JOIN t_member m  ON  m.deptid=d.deptid
+        SELECT * FROM t_department d  LEFT JOIN t_member m  ON  m.deptid=d.deptid ORDER BY d.deptid
     </select>
 
+    <insert id="insertDepartment" parameterType="Department">
+        INSERT INTO t_department VALUES (#{id},#{description})
+    </insert>
 
 
 

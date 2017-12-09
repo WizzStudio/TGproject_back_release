@@ -37,7 +37,7 @@ public class TestMember extends AbstractTestNGSpringContextTests{
         member.setCollege("软件学院");
         member.setDepartmentId(1);
         member.setProjectId(1);
-        member.setAvatar("http:localhost");
+//        member.setAvatar("http:localhost");
         member.setAge(20);
         member.setGender(1);
         member.setTag("性格：活泼");
@@ -48,10 +48,9 @@ public class TestMember extends AbstractTestNGSpringContextTests{
 
     @Test
     public void testUpdate(){
-        Member member = memberDao.selectMemberById(4);
-        member.setCollege("软件工程");
-        member.setDepartmentId(2);
-        member.setProjectId(1);
+        Member member = new Member();
+
+        member.setUsername("樊磊");
         System.out.println(member);
         memberDao.updateMemberById(4,member);
     }

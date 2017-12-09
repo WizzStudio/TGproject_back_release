@@ -8,7 +8,9 @@
                         http://www.springframework.org/schema/context
                         http://www.springframework.org/schema/context/spring-context-4.0.xsd
                         http://www.springframework.org/schema/mvc
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd 
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:component-scan base-package="site.tgclub.controller"/>
 
@@ -19,15 +21,23 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+
     <mvc:default-servlet-handler/>
 
     <mvc:annotation-driven/>
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/*"/>
+            <mvc:mapping path="/**"/>
             <bean class="site.tgclub.interceptor.AdminInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <mvc:cors>
+        <mvc:mapping path="/**"
+                     allowed-origins="*"
+                     allowed-methods="POST, GET, OPTIONS, DELETE, PUT"
+                     allowed-headers="Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+                     allow-credentials="true" />
+    </mvc:cors>
 </beans>

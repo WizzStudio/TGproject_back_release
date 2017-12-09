@@ -12,15 +12,56 @@
     </select>
 
     <select id="getAllMembers" resultType="member" resultMap="memExResultMap" >
-        SELECT * FROM t_member
+        SELECT * FROM t_member ORDER BY id
     </select>
 
     <insert id="insertMember" parameterType="member">
-        INSERT INTO t_member VALUES (#{id},#{username},#{college},#{projectId},#{departmentId},#{avatar},#{introduction},#{tag},#{gender},#{age})
+        INSERT INTO t_member (<include refid="key"/>) VALUES (<include refid="value"/>)
     </insert>
 
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="id != null ">id,</if>
+            <if test="username != null ">username,</if>
+            <if test="college != null ">college,</if>
+            <if test="projectId != null ">proId,</if>
+            <if test="departmentId != null ">deptId,</if>
+            <if test="avatar != null ">avatar,</if>
+            <if test="introduction != null ">introduction,</if>
+            <if test="tag != null ">tag,</if>
+            <if test="gender != null ">gender,</if>
+            <if test="age != null ">age,</if>
+        </trim>
+    </sql>
+
+    <sql id="value">
+        <trim suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="username != null ">#{username},</if>
+            <if test="college != null ">#{college},</if>
+            <if test="projectId != null ">#{projectId},</if>
+            <if test="departmentId != null ">#{departmentId},</if>
+            <if test="avatar != null ">#{avatar},</if>
+            <if test="introduction != null ">#{introduction},</if>
+            <if test="tag != null ">#{tag},</if>
+            <if test="gender != null ">#{gender},</if>
+            <if test="age != null ">#{age},</if>
+        </trim>
+    </sql>
+
     <update id="updateMemberById" >
-        UPDATE t_member SET username=#{member.username},college=#{member.college},proid=#{member.projectId},deptid=#{member.departmentId},avatar=#{member.avatar},introduction=#{member.introduction},tag=#{member.tag},gender=#{member.gender},age=#{member.age} WHERE id=#{id}
+        UPDATE t_member <set>
+                            <if test="member.username != null ">username=#{member.username},</if>
+                            <if test="member.college != null ">college=#{member.college},</if>
+                            <if test="member.projectId != null ">proid=#{member.projectId},</if>
+                            <if test="member.departmentId != null ">deptid=#{member.departmentId},</if>
+                            <if test="member.avatar != null ">avatar=#{member.avatar},</if>
+                            <if test="member.introduction != null ">introduction=#{member.introduction},</if>
+                            <if test="member.tag != null ">tag=#{member.tag},</if>
+                            <if test="member.gender != null ">gender=#{member.gender},</if>
+                            <if test="member.age != null ">age=#{member.age}</if>
+                       </set>
+         WHERE id=#{id}
     </update>
 
     <delete id="deleteMemberById" parameterType="Integer">

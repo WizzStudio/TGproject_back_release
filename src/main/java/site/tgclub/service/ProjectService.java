@@ -6,6 +6,7 @@ import site.tgclub.model.Project;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 /**
  * @author fzm
  * @date 2017/11/15
@@ -29,7 +30,7 @@ public class ProjectService {
         return project;
     }
 
-    public Project updateProject(Integer id,Project project){
+    public Project updateProject(Integer id, Project project){
         projectDao.updateProjectById(id, project);
         return project;
     }

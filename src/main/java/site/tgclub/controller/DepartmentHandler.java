@@ -10,10 +10,10 @@ import site.tgclub.model.Department;
 import site.tgclub.service.DepartmentService;
 
 import java.util.List;
+
 /**
  * @author fzm
- * @date 2017/11/18
- **/
+ */
 @Controller
 public class DepartmentHandler {
 

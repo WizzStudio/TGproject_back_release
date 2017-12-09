@@ -10,7 +10,7 @@ import java.util.Date;
 public class Competation {
 
 	private Integer id;
-	private String contestOrganizer;	//竞赛主办方
+	private String ContestOrganizer;	//竞赛主办方
 	private Date startTime;		//竞赛开始时间
 	private Date endTime;		//竞赛结束时间
 	private String content;		//竞赛具体介绍
@@ -21,10 +21,10 @@ public class Competation {
 		this.id = id;
 	}
 	public String getContestOrganizer() {
-		return contestOrganizer;
+		return ContestOrganizer;
 	}
 	public void setContestOrganizer(String contestOrganizer) {
-		contestOrganizer = contestOrganizer;
+		ContestOrganizer = contestOrganizer;
 	}
 	public Date getStartTime() {
 		return startTime;

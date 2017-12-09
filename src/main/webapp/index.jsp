@@ -5,7 +5,18 @@
 </head>
 <body>
 <h2>Hello World!</h2>
+<a href="hello">Hello</a>
 
+<form action="getAll" method="post">
+    id:<input type="text" name="id"/>
+    <input type="submit" value="Submit"/>
+</form>
+
+<form action="member" method="post">
+    <table>
+
+    </table>
+</form>
 
 </body>
 </html>

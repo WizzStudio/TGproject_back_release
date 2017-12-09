@@ -1,10 +1,10 @@
 package site.tgclub.model;
 
 import java.util.Set;
+
 /**
  * @author fzm
- * @date 2017/11/15
- **/
+ */
 public class Category {
     private Integer id;
     private String description;

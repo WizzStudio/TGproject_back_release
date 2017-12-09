@@ -1,8 +1,9 @@
 package site.tgclub.exception;
+
+
 /**
  * @author fzm
- * @date 2017/11/18
- **/
+ */
 public class NoSuchResourceException extends RuntimeException {
     public NoSuchResourceException() {
     }

@@ -6,16 +6,60 @@
     </select>
 
     <select id="getAllProjects" resultType="Project" resultMap="ProExResultMap">
-        SELECT  * FROM t_project p LEFT JOIN t_member m ON  m.proid = p.proid LEFT JOIN t_proj_cate pc ON p.proid = pc.proid LEFT JOIN t_category c ON c.cateid=pc.cateid
+        SELECT  * FROM t_project p LEFT JOIN t_member m ON  m.proid = p.proid LEFT JOIN t_proj_cate pc ON p.proid = pc.proid LEFT JOIN t_category c ON c.cateid=pc.cateid ORDER BY p.proid
     </select>
 
     <insert id="insertProject" parameterType="project">
-        INSERT INTO t_project VALUES (#{id},#{projectName},#{startDate},#{finishedDate},#{sourceUrl},#{leaderId},#{UIProgress},#{frontProgress},#{backProgress},#{picUrl},#{introduction},#{totalProgress})
+        INSERT INTO t_project (<include refid="key"/>) VALUES (<include refid="value"/>)
     </insert>
 
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="projectName !=null">projectName,</if>
+            <if test="startDate !=null">startDate,</if>
+            <if test="finishedDate !=null">finishedDate,</if>
+            <if test="sourceUrl !=null">sourceUrl,</if>
+            <if test="leaderId !=null">leaderId,</if>
+            <if test="UIProgress !=null">UIProgress,</if>
+            <if test="frontProgress !=null">frontProgress,</if>
+            <if test="backProgress !=null">backProgress,</if>
+            <if test="picUrl !=null">picUrl,</if>
+            <if test="introduction !=null">intro,</if>
+            <if test="totalProgress !=null">totalProgress</if>
+        </trim>
+    </sql>
+
+    <sql id="value">
+        <trim suffixOverrides=",">
+            <if test="projectName !=null">#{projectName},</if>
+            <if test="startDate !=null">#{startDate},</if>
+            <if test="finishedDate !=null">#{finishedDate},</if>
+            <if test="sourceUrl !=null">#{sourceUrl},</if>
+            <if test="leaderId !=null">#{leaderId},</if>
+            <if test="UIProgress !=null">#{UIProgress},</if>
+            <if test="frontProgress !=null">#{frontProgress},</if>
+            <if test="backProgress !=null">#{backProgress},</if>
+            <if test="picUrl !=null">#{picUrl},</if>
+            <if test="introduction !=null">#{introduction},</if>
+            <if test="totalProgress !=null">#{totalProgress}</if>
+        </trim>
+    </sql>
+
     <update id="updateProjectById" >
-        UPDATE t_project SET projectName=#{project.projectName},startDate=#{project.startDate},finishedDate=#{project.finishedDate},sourceUrl=#{project.sourceUrl},leaderId=#{project.leaderId},UIProgress=#{project.UIProgress},frontProgress=#{project.frontProgress},backProgress=#{project.backProgress},picUrl=#{project.picUrl},
-        intro=#{project.introduction},totalProgress=#{project.totalProgress} WHERE proid = #{id}
+        UPDATE t_project <set>
+                            <if test="project.projectName !=null">projectName=#{project.projectName},</if>
+                            <if test="project.startDate !=null">startDate=#{project.startDate},</if>
+                            <if test="project.finishedDate !=null">finishedDate=#{project.finishedDate},</if>
+                            <if test="project.sourceUrl !=null">sourceUrl=#{project.sourceUrl},</if>
+                            <if test="project.leaderId !=null">leaderId=#{project.leaderId},</if>
+                            <if test="project.UIProgress !=null">UIProgress=#{project.UIProgress},</if>
+                            <if test="project.frontProgress !=null">frontProgress=#{project.frontProgress},</if>
+                            <if test="project.backProgress !=null">backProgress=#{project.backProgress},</if>
+                            <if test="project.picUrl !=null">picUrl=#{project.picUrl},</if>
+                            <if test="project.introduction !=null">intro=#{project.introduction},</if>
+                            <if test="project.totalProgress !=null">totalProgress=#{project.totalProgress}</if>
+                        </set>
+        WHERE proid = #{id}
     </update>
 
     <delete id="deleteProjectById" parameterType="Integer">

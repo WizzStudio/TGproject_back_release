@@ -4,7 +4,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.stereotype.Repository;
 import site.tgclub.model.Department;
 
-
 import java.util.List;
 
 /**
